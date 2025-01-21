@@ -1,5 +1,10 @@
 {
   "version": 2,
   "builds": [{ "src": "./index.js", "use": "@vercel/node" }],
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }],
+  "functions": {
+    "app/api/**/*": {
+      "maxDuration": 5
+    }
+  }
 }
