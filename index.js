@@ -25,10 +25,6 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use("/", (req, res) => {
-  return res.json({ status: SUCCESS, data: { message: "Hello, world!" } });
-});
-
 app.use("/api/courses", coursesRouter);
 
 app.use("/api/users", usersRouter);
