@@ -24,6 +24,11 @@ app.use(express.json());
 
 app.use(cors());
 
+app.use("/", (req, res, next) => {
+  console.log("request came vericle started");
+  next();
+});
+
 app.use("/api/courses", coursesRouter);
 
 app.use("/api/users", usersRouter);
