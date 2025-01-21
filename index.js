@@ -15,6 +15,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 const mongoose = require("mongoose");
 const { ERROR, SUCCESS } = require("./utils/httpStatusText");
 const usersRouter = require("./router/usersRouter");
+const { json } = require("stream/consumers");
 
 const url = process.env.MONGO_URL;
 
@@ -25,7 +26,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/", (req, res, next) => {
-  console.log("request came vericle started");
+  res.json({ status: SUCCESS, message: "Hello, world!" });
   next();
 });
 
