@@ -15,7 +15,6 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 const mongoose = require("mongoose");
 const { ERROR, SUCCESS } = require("./utils/httpStatusText");
 const usersRouter = require("./router/usersRouter");
-const { json } = require("stream/consumers");
 
 const url = process.env.MONGO_URL;
 
@@ -33,6 +32,10 @@ app.all("*", (req, res, next) => {
   return res
     .status(404)
     .json({ status: ERROR, message: "this resurse not avilable" });
+});
+
+app.get("/", (req, res) => {
+  return res.json({ status: SUCCESS, message: "success access" });
 });
 
 app.use((error, req, res, next) => {
