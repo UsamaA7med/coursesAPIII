@@ -25,9 +25,8 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use("/", (req, res, next) => {
-  res.json({ status: SUCCESS, message: "Hello, world!" });
-  next();
+app.use("/", (req, res) => {
+  return res.json({ status: SUCCESS, message: "Hello, world!" });
 });
 
 app.use("/api/courses", coursesRouter);
